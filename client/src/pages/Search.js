@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import RadioButton from '../components/form/RadioButton'
+import SearchForm from '../components/form/SearchForm'
 import {G_API} from '../Utils'
 
 class Search extends Component {
@@ -7,6 +7,7 @@ class Search extends Component {
   state = {
     input: '',
     results: [],
+    searched: false,
     selectedOption: 'title',
     radioButtons: ['title', 'subject']
   }
@@ -20,7 +21,7 @@ class Search extends Component {
   }
 
   updateResults = results => {
-    this.setState({ results })
+    this.setState({ results, searched: true })
   }
 
   submitSearch = event => {
@@ -32,24 +33,15 @@ class Search extends Component {
     return (
       <div>
       <h1>Search</h1>
-        <form>
-          {this.state.radioButtons.map(radio => (
-            <RadioButton
-              key={`radio-${radio}`}
-              value={radio}
-              selectedOption={this.state.selectedOption}
-              handleChange={this.handleOptionChange}
-            />
-          ))}
-          <label style={{display: 'block', clear: 'both'}}>
-            Book Name
-            <input type="text" onChange={this.inputTextChangeHandler} value={this.state.input} />
-          </label>
-          
-          <button onClick={this.submitSearch}>Search</button>
-
-        </form>
-          
+        <SearchForm
+          inputValue={this.state.input}
+          radioButtons={this.state.radioButtons}
+          changeHandler={this.inputTextChangeHandler}
+          radioChangeHandler={this.handleOptionChange}
+          selectedOption={this.state.selectedOption}
+          submitSearch={this.submitSearch}
+        />
+                    
         {this.state.results.map(result => (
           <h2 key={result.id}>{result.volumeInfo.title}</h2>
         ))}
