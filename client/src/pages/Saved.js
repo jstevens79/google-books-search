@@ -1,14 +1,18 @@
 import React, {Component} from 'react'
-import axios from 'axios'
+import {DB_API} from '../Utils'
 
 class Saved extends Component {
 
   state = {
     saved: []
   }
+  
+  setSavedBooks = books => {
+    this.setState({ saved: books })
+  }
 
   componentDidMount() {
-    axios.get('/api').then(res => this.setState({ saved: res.data }))
+    DB_API.getSavedBooks(this.setSavedBooks)
   }
 
   render() {

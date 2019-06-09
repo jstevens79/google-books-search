@@ -11,3 +11,30 @@ export const G_API = {
     })
   }
 }
+
+export const DB_API = {
+  getSavedBooks: (callback) => {
+    axios.get('/api')
+      .then(res => callback(res.data))
+      .catch(err => console.log(err))
+  },
+
+  getSavedBook: (id, callback) => {
+    axios.get(`/api/${id}`)
+      .then(res => callback(res.data))
+      .catch(err => console.log(err))
+  },
+
+  saveBook: (callback) => {
+    axios.post('/api')
+      .then(res => callback(res.data))
+      .catch(err => console.log(err))
+  },
+
+  deleteBook: (id, callback) => {
+    axios.delete(`/api/${id}`)
+      .then(res => callback())
+      .catch(err => console.log(err))
+  }
+
+}
