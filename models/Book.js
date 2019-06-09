@@ -12,6 +12,10 @@ const BookSchema = new Schema({
     type: String
   },
 
+  publishedDate: {
+    type: String
+  },
+
   description: {
     type: String
   },
