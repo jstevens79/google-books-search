@@ -25,15 +25,15 @@ export const DB_API = {
       .catch(err => console.log(err))
   },
 
-  saveBook: (callback) => {
-    axios.post('/api')
+  saveBook: (book, callback) => {
+    axios.post('/api', book)
       .then(res => callback(res.data))
       .catch(err => console.log(err))
   },
 
-  deleteBook: (id, callback) => {
+  deleteBook: (id) => {
     axios.delete(`/api/${id}`)
-      .then(res => callback())
+      .then(res => console.log('removed'))
       .catch(err => console.log(err))
   }
 

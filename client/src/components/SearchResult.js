@@ -1,11 +1,43 @@
-import React from 'react'
+import React, {useState} from "react";
+import Saved from "../pages/Saved";
 
-const SearchResult = ({ book }) => (
-  <div className="searchResult">
-    <h2>{book.volumeInfo.title}</h2>
-    <h3>Author(s): {book.volumeInfo.authors.join(', ')}</h3>
-    <p>{book.volumeInfo.description}</p>
-  </div>
-)
+const SearchResult = ({ book, saveBook }) => {
+  
+  const bookData = {
+    googleId: book.id,
+    title: book.volumeInfo.title,
+    authors: (book.volumeInfo.authors) ? book.volumeInfo.authors : ['Unknown'],
+    publishedDate: book.volumeInfo.publishedDate,
+    description: book.volumeInfo.description,
+    image: book.volumeInfo.imageLinks.thumbnail,
+    link: book.volumeInfo.infoLink
+  }
 
-export default SearchResult
+  // const saveBook = () => {
+  //   if (!dbId) {
+  //     DB_API.saveBook(bookData, confirmed)
+  //   } else {
+  //     DB_API.deleteBook(dbId)
+  //   }
+  // }
+
+  return (
+    <div className="searchResult">
+      <img src={bookData.image} alt={bookData.title} />
+      <a
+        href={bookData.infoLink}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <h2>{bookData.title}</h2>
+      </a>
+      <h4>Date: {bookData.publishedDate}</h4>
+      <h4>Author(s): {bookData.authors.join(", ")}</h4>
+      <p>{bookData.description}</p>
+      <div className="saveArticle" onClick={() => saveBook()}>
+        Save
+      </div>
+    </div>
+  );
+};
+export default SearchResult;

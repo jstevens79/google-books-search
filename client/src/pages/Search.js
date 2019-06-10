@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import SearchForm from '../components/form/SearchForm'
 import SearchResult from '../components/SearchResult'
-import {G_API} from '../Utils'
+import {G_API, DB_API} from '../Utils'
 
 class Search extends Component {
 
@@ -10,7 +10,8 @@ class Search extends Component {
     results: [],
     searched: false,
     selectedOption: 'title',
-    radioButtons: ['title', 'subject']
+    radioButtons: ['title', 'subject'],
+    savedBooks: []
   }
 
   inputTextChangeHandler = event => {
@@ -25,13 +26,22 @@ class Search extends Component {
     this.setState({ results, searched: true })
   }
 
+  saveBook = book => {
+    DB_API.saveBook(book, this.getSavedBooks)
+  }
+
   submitSearch = event => {
     event.preventDefault();
     G_API.searchBooks(this.state.input, this.state.selectedOption, this.updateResults)
   }
 
-  componentWillUnmount() {
-    console.log('unmounted...')
+  getBooks = () => {
+    const setBooks = books => this.setState({ savedBooks: books})
+    DB_API.getSavedBooks(setBooks)
+  }
+
+  componentDidMount() {
+    this.getBooks()
   }
 
   render() {
@@ -48,7 +58,7 @@ class Search extends Component {
         />
                     
         {this.state.results.map(result => (
-          <SearchResult key={result.id} book={result} />
+          <SearchResult key={result.id} book={result} saveBook={this.saveBook} />
         ))}
 
       </div>
