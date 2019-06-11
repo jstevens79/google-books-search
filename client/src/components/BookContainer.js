@@ -1,38 +1,24 @@
 import React from "react";
 
-const BookContainer = ({ book, deleteBook, addBook }) => {
-  let bData = {};
+const BookContainer = ({ book, toggleBookSave, savedBooks }) => {
 
-  if (!book._id) {
-    bData = {
-      googleId: book.id,
-      title: book.volumeInfo.title,
-      authors: book.volumeInfo.authors ? book.volumeInfo.authors : ["Unknown"],
-      publishedDate: book.volumeInfo.publishedDate,
-      description: book.volumeInfo.description,
-      image: book.volumeInfo.imageLinks.thumbnail,
-      link: book.volumeInfo.infoLink
-    };
-  } else {
-    bData = book;
-  }
+  const Saved = savedBooks.find(s => s.googleId === book.googleId)
+  const Send = Saved ? Saved : book
 
   return (
     <div className="BookContainer">
       <div className="imageContainer">
-        <img src={bData.image} alt={bData.title} />
+        <img src={book.image} alt={book.title} />
       </div>
       <div className="bookDetails">
-        <a href={bData.link} rel="noopener noreferrer" target="_blank">
-          <h2>{bData.title}</h2>
+        <a href={book.link} rel="noopener noreferrer" target="_blank">
+          <h2>{book.title}</h2>
         </a>
 
-        <p>{bData.description}</p>
-        {bData._id ? (
-          <button onClick={() => deleteBook(bData._id)}>Delete</button>
-        ) : (
-          <button onClick={() => addBook(bData)}>Add</button>
-        )}
+        <p>{book.description}</p>
+        <button onClick={() => toggleBookSave(Send)}>
+          {Saved ? "Delete" : "Add"}
+        </button>
       </div>
     </div>
   );

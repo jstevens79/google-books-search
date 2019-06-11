@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import SearchForm from "../components/form/SearchForm";
-import SearchResult from "../components/SearchResult";
 import BookContainer from "../components/BookContainer";
-import { G_API, DB_API } from "../Utils";
+import { G_API } from "../Utils";
 
 class Search extends Component {
   state = {
@@ -22,9 +21,32 @@ class Search extends Component {
   };
 
   updateResults = results => {
-    this.setState({ results, searched: true });
-  };
+    const booksData = results.map((book, i) => {
+      // see if this one is already saved
+      const AlreadySaved = this.props.savedBooks.find(
+        saved => saved.googleId === book.id
+      );
+      if (AlreadySaved) {
+        return AlreadySaved;
+      } else {
+        
+        const bData = {
+          googleId: book.id,
+          title: book.volumeInfo.title,
+          authors: book.volumeInfo.authors
+            ? book.volumeInfo.authors
+            : ["Unknown"],
+          publishedDate: book.volumeInfo.publishedDate,
+          description: book.volumeInfo.description,
+          image: book.volumeInfo.imageLinks.thumbnail,
+          link: book.volumeInfo.infoLink
+        };
+        return bData;
+      }
+    });
 
+    this.setState({ results: booksData, searched: true });
+  };
 
   submitSearch = event => {
     event.preventDefault();
@@ -50,10 +72,10 @@ class Search extends Component {
 
         {this.state.results.map(result => (
           <BookContainer
-            key={result.id}
+            key={result.googleId}
+            savedBooks={this.props.savedBooks}
             book={result}
-            addBook={this.props.addBook}
-            deleteBook={this.props.deleteBook}
+            toggleBookSave={this.props.toggleBookSave}
           />
         ))}
       </div>

@@ -1,13 +1,14 @@
 import React from "react";
 import BookContainer from '../components/BookContainer'
 
-const Saved = ({ savedBooks, deleteBook}) => (
+const Saved = ({ savedBooks, toggleBookSave}) => (
   <div>
     {savedBooks.map(book => (
       <BookContainer
         key={book._id}
         book={book}
-        deleteBook={deleteBook}
+        savedBooks={savedBooks}
+        toggleBookSave={toggleBookSave}
       />
     ))}
   </div>

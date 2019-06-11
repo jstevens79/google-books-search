@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import Saved from "../pages/Saved";
+import React from "react";
 
 const SearchResult = ({ book, saveBook }) => {
   

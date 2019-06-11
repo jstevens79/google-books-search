@@ -16,22 +16,24 @@ class App extends Component {
 
   getBooks = () => {
     const setBooks = data => {
-      this.setState({ savedBooks: data });
+      this.setState({ savedBooks: data }, () => {
+        console.log(this.state.savedBooks)
+      });
     };
     DB_API.getSavedBooks(setBooks);
-  };
-
-  addBook = book => {
-    DB_API.saveBook(book, this.getBooks);
-  };
-
-  deleteBook = id => {
-    DB_API.deleteBook(id, this.getBooks);
   };
 
   componentDidMount() {
     this.getBooks();
   }
+
+  toggleBookSave = (book) => {
+    if (book._id) {
+      DB_API.deleteBook(book._id, this.getBooks);
+    } else {
+      DB_API.saveBook(book, this.getBooks);
+    }
+  };
 
   render() {
     return (
@@ -46,18 +48,14 @@ class App extends Component {
               exact
               path="/"
               render={props => (
-                <Search
-                  {...this.state}
-                  deleteBook={this.deleteBook}
-                  addBook={this.addBook}
-                />
+                <Search {...this.state} toggleBookSave={this.toggleBookSave} />
               )}
             />
             <Route
               exact
               path="/saved"
               render={props => (
-                <Saved {...this.state} deleteBook={this.deleteBook} />
+                <Saved {...this.state} toggleBookSave={this.toggleBookSave} />
               )}
             />
           </Switch>
