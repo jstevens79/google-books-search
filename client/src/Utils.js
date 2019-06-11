@@ -31,9 +31,9 @@ export const DB_API = {
       .catch(err => console.log(err))
   },
 
-  deleteBook: (id) => {
+  deleteBook: (id, callback) => {
     axios.delete(`/api/${id}`)
-      .then(res => console.log('removed'))
+      .then(res => callback())
       .catch(err => console.log(err))
   }
 

@@ -1,30 +1,16 @@
-import React, {Component} from 'react'
-import {DB_API} from '../Utils'
+import React from "react";
+import BookContainer from '../components/BookContainer'
 
-class Saved extends Component {
+const Saved = ({ savedBooks, deleteBook}) => (
+  <div>
+    {savedBooks.map(book => (
+      <BookContainer
+        key={book._id}
+        book={book}
+        deleteBook={deleteBook}
+      />
+    ))}
+  </div>
+)
 
-  state = {
-    saved: []
-  }
-  
-  setSavedBooks = books => {
-    this.setState({ saved: books })
-  }
-
-  componentDidMount() {
-    DB_API.getSavedBooks(this.setSavedBooks)
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.saved.map(book => (
-          <h1 key={book._id}>{book.title}</h1>
-        ))}
-      </div>
-    )
-  }
-
-}
-
-export default Saved
+export default Saved;

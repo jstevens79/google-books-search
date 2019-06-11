@@ -1,53 +1,44 @@
-import React, {Component} from 'react'
-import SearchForm from '../components/form/SearchForm'
-import SearchResult from '../components/SearchResult'
-import {G_API, DB_API} from '../Utils'
+import React, { Component } from "react";
+import SearchForm from "../components/form/SearchForm";
+import SearchResult from "../components/SearchResult";
+import BookContainer from "../components/BookContainer";
+import { G_API, DB_API } from "../Utils";
 
 class Search extends Component {
-
   state = {
-    input: '',
+    input: "",
     results: [],
     searched: false,
-    selectedOption: 'title',
-    radioButtons: ['title', 'subject'],
-    savedBooks: []
-  }
+    selectedOption: "title",
+    radioButtons: ["title", "subject"]
+  };
 
   inputTextChangeHandler = event => {
-    this.setState({ input: event.target.value})
-  }
+    this.setState({ input: event.target.value });
+  };
 
   handleOptionChange = event => {
-    this.setState({ selectedOption: event.target.value})
-  }
+    this.setState({ selectedOption: event.target.value });
+  };
 
   updateResults = results => {
-    this.setState({ results, searched: true })
-  }
+    this.setState({ results, searched: true });
+  };
 
-  saveBook = book => {
-    DB_API.saveBook(book, this.getSavedBooks)
-  }
 
   submitSearch = event => {
     event.preventDefault();
-    G_API.searchBooks(this.state.input, this.state.selectedOption, this.updateResults)
-  }
-
-  getBooks = () => {
-    const setBooks = books => this.setState({ savedBooks: books})
-    DB_API.getSavedBooks(setBooks)
-  }
-
-  componentDidMount() {
-    this.getBooks()
-  }
+    G_API.searchBooks(
+      this.state.input,
+      this.state.selectedOption,
+      this.updateResults
+    );
+  };
 
   render() {
     return (
       <div>
-      <h1>Search</h1>
+        <h1>Search</h1>
         <SearchForm
           inputValue={this.state.input}
           radioButtons={this.state.radioButtons}
@@ -56,17 +47,18 @@ class Search extends Component {
           selectedOption={this.state.selectedOption}
           submitSearch={this.submitSearch}
         />
-                    
+
         {this.state.results.map(result => (
-          <SearchResult key={result.id} book={result} saveBook={this.saveBook} />
+          <BookContainer
+            key={result.id}
+            book={result}
+            addBook={this.props.addBook}
+            deleteBook={this.props.deleteBook}
+          />
         ))}
-
       </div>
-    )
-
+    );
   }
-
-
 }
 
-export default Search
+export default Search;

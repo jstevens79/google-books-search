@@ -13,14 +13,6 @@ const SearchResult = ({ book, saveBook }) => {
     link: book.volumeInfo.infoLink
   }
 
-  // const saveBook = () => {
-  //   if (!dbId) {
-  //     DB_API.saveBook(bookData, confirmed)
-  //   } else {
-  //     DB_API.deleteBook(dbId)
-  //   }
-  // }
-
   return (
     <div className="searchResult">
       <img src={bookData.image} alt={bookData.title} />

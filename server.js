@@ -5,7 +5,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/googleBooks", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/googleBooks", { useNewUrlParser: true, useFindAndModify: false });
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

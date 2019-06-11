@@ -17,4 +17,12 @@ router.post('/api', (req, res) => {
     })
 })
 
+router.delete('/api/:id', (req, res) => {
+  db.Book.findByIdAndRemove(req.params.id)
+    .then(() => res.json('deleted'))
+    .catch(err => {
+      console.log(err)
+    })
+})
+
 module.exports = router;
