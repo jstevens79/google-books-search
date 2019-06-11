@@ -1,9 +1,8 @@
 import React from "react";
 
 const BookContainer = ({ book, toggleBookSave, savedBooks }) => {
-
-  const Saved = savedBooks.find(s => s.googleId === book.googleId)
-  const Send = Saved ? Saved : book
+  const Saved = savedBooks.find(s => s.googleId === book.googleId);
+  const Send = Saved ? Saved : book;
 
   return (
     <div className="BookContainer">

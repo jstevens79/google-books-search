@@ -29,7 +29,6 @@ class Search extends Component {
       if (AlreadySaved) {
         return AlreadySaved;
       } else {
-        
         const bData = {
           googleId: book.id,
           title: book.volumeInfo.title,
@@ -38,7 +37,7 @@ class Search extends Component {
             : ["Unknown"],
           publishedDate: book.volumeInfo.publishedDate,
           description: book.volumeInfo.description,
-          image: book.volumeInfo.imageLinks.thumbnail,
+          image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : null,
           link: book.volumeInfo.infoLink
         };
         return bData;

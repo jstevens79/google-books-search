@@ -16,24 +16,22 @@ class App extends Component {
 
   getBooks = () => {
     const setBooks = data => {
-      this.setState({ savedBooks: data }, () => {
-        console.log(this.state.savedBooks)
-      });
+      this.setState({ savedBooks: data });
     };
     DB_API.getSavedBooks(setBooks);
   };
 
-  componentDidMount() {
-    this.getBooks();
-  }
-
-  toggleBookSave = (book) => {
+  toggleBookSave = book => {
     if (book._id) {
       DB_API.deleteBook(book._id, this.getBooks);
     } else {
       DB_API.saveBook(book, this.getBooks);
     }
   };
+
+  componentDidMount() {
+    this.getBooks();
+  }
 
   render() {
     return (
