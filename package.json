@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "A Google Books Search App Using React and MongoDB",
   "main": "server.js",
+  "engines": {
+    "node": "11.6.0"
+  },
   "scripts": {
     "start": "node server.js",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
