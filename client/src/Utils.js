@@ -3,7 +3,6 @@ import axios from 'axios'
 export const G_API = {
   searchBooks: (query, queryType, callback) => {
     const queryUrl = `https://www.googleapis.com/books/v1/volumes?q=${queryType}:${query}&maxResults=40&key=AIzaSyAw0puj8bAkJTt5v2b1iC8wG7G9sngtqh0`
-    console.log(queryUrl)
     axios.get(queryUrl)
     .then((res) => {
       const response = (res.data.items) ? res.data.items : []
