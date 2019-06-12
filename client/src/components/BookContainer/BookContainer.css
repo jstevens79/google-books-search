@@ -78,3 +78,13 @@
   margin-bottom: 1em;
   color: rgb(105, 105, 105);
 }
+
+@media only screen and (max-width: 600px) {
+  .imageContainer {
+    display: none;
+  }
+
+  .bookDetails {
+    padding: 0 10px;
+  }
+}

@@ -45,6 +45,7 @@
   font-size: 1.3em;
   border: none;
   color: #333;
+  min-width: 200px;
 }
 
 .searchInput:focus {
