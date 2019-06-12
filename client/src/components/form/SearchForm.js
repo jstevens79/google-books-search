@@ -22,18 +22,18 @@ const SearchForm = ({
         />
       ))}
     </div>
+    <div className="searchBar">
+    <input
+    className="searchInput"
+    type="text"
+    onChange={changeHandler}
+    value={inputValue}
+  />
+  <button className="searchButton" onClick={submitSearch}>Search</button>
+    </div>
+    
 
-    <label style={{ display: "block", clear: "both" }}>
-      Book Name
-      <input
-        className="searchInput"
-        type="text"
-        onChange={changeHandler}
-        value={inputValue}
-      />
-    </label>
-
-    <button onClick={submitSearch}>Search</button>
+    
   </form>
 );
 

@@ -3,17 +3,29 @@
   max-width: 1280px;
 }
 
-.searchInput {
-  display: block;
-  clear: both;
-  min-width: calc(100% - 40px);
+.searchBar {
+  margin: 30px 0px;
+  display: flex;
   border-radius: 6px;
-  padding: 10px 20px;
   border: solid 1px rgb(189, 189, 189);
-  font-size: 1.3em;
   box-shadow: 0 2px 10px rgba(0,0,0,0.3); 
+  overflow: hidden;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 20px 20px;
+  font-size: 1.3em;
+  border: none;
 }
 
 .searchInput:focus {
   outline: none;
+}
+
+.searchButton {
+  padding: 0 32px;
+  display: block;
+  background: gray;
+  border: none;
 }
