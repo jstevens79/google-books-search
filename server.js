@@ -10,10 +10,10 @@ let db = "mongodb://localhost/googleBooks"
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  db = process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds237267.mlab.com:37267/heroku_t9xqk005 "
+  db = process.env.MONGODB_URI || "mongodb://user1:password1@ds237267.mlab.com:37267/heroku_t9xqk005 "
 }
 
-mongoose.connect(DB, { useNewUrlParser: true, useFindAndModify: false });
+mongoose.connect(db, { useNewUrlParser: true, useFindAndModify: false });
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
