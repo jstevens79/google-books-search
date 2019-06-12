@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SearchForm from "../components/form/SearchForm";
+import SearchForm from "../components/SearchForm";
 import BookContainer from "../components/BookContainer";
 import { G_API } from "../Utils";
 
@@ -37,7 +37,9 @@ class Search extends Component {
             : ["Unknown"],
           publishedDate: book.volumeInfo.publishedDate,
           description: book.volumeInfo.description,
-          image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : null,
+          image: book.volumeInfo.imageLinks
+            ? book.volumeInfo.imageLinks.thumbnail
+            : null,
           link: book.volumeInfo.infoLink
         };
         return bData;

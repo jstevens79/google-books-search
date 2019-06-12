@@ -36,38 +36,6 @@ h3 {
   margin-bottom: .5em;
 }
 
-.navBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 80px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: solid 1px rgb(197, 197, 197);
-}
-
-.navBar a {
-  background: rgb(199, 199, 199);
-  padding: 10px 30px;
-  margin: 0 5px;
-  display: block;
-  border-radius: 6px;
-  text-decoration: none;
-  color: white;
-}
-
-.navBar a:hover {
-  background: rgb(93, 176, 243);
-}
-
-.navBar a.active {
-  background: #2196F3;
-}
-
 .app {
   padding-top: 100px;
 }

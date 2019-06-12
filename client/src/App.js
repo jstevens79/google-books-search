@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  NavLink,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import { DB_API } from "./Utils";
@@ -39,14 +35,7 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
-          <nav className="navBar">
-            <NavLink to="/" exact>
-              Search
-            </NavLink>
-            <NavLink to="/saved" exact>
-              Saved
-            </NavLink>
-          </nav>
+          <NavBar />
           <div className="resultsContainer">
             <Switch>
               <Route

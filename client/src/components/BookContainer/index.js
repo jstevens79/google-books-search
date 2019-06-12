@@ -20,7 +20,7 @@ const BookContainer = ({ book, toggleBookSave, savedBooks }) => {
           <p className="bookDesc">{book.description}</p>
         </div>
       </div>
-      <div className={`statusBar ${Saved ? 'saved' : ''}`}>
+      <div className={`statusBar ${Saved ? "saved" : ""}`}>
         <button className="addDelete" onClick={() => toggleBookSave(Send)}>
           {Saved ? "Delete -" : "Add +"}
         </button>

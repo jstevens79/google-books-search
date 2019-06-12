@@ -31,7 +31,11 @@ const SearchForm = ({
           onChange={changeHandler}
           value={inputValue}
         />
-        <button disabled={Disabled} className={`searchButton ${(Disabled) ? 'disabled' : ''}`} onClick={submitSearch}>
+        <button
+          disabled={Disabled}
+          className={`searchButton ${Disabled ? "disabled" : ""}`}
+          onClick={submitSearch}
+        >
           Search
         </button>
       </div>

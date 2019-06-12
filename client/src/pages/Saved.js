@@ -1,7 +1,7 @@
 import React from "react";
-import BookContainer from '../components/BookContainer'
+import BookContainer from "../components/BookContainer";
 
-const Saved = ({ savedBooks, toggleBookSave}) => (
+const Saved = ({ savedBooks, toggleBookSave }) => (
   <div>
     {savedBooks.map(book => (
       <BookContainer
@@ -12,6 +12,6 @@ const Saved = ({ savedBooks, toggleBookSave}) => (
       />
     ))}
   </div>
-)
+);
 
 export default Saved;
