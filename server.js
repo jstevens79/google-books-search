@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-require('dotenv').config()
+require("dotenv").config();
 
 let db = "mongodb://localhost/googleBooks";
 
@@ -12,7 +12,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   db = process.env.MONGODB_URI || process.env.PROD_DB;
 }
-
 
 mongoose.connect(db, { useNewUrlParser: true, useFindAndModify: false });
 
