@@ -8,6 +8,8 @@ import {
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import { DB_API } from "./Utils";
+import "./reset.css";
+import "./styles.css";
 
 class App extends Component {
   state = {
@@ -36,27 +38,36 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <nav>
-            <NavLink to="/">Search</NavLink>
-            <NavLink to="/saved">Saved</NavLink>
+        <div className="app">
+          <nav className="navBar">
+            <NavLink to="/" exact>
+              Search
+            </NavLink>
+            <NavLink to="/saved" exact>
+              Saved
+            </NavLink>
           </nav>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={props => (
-                <Search {...this.state} toggleBookSave={this.toggleBookSave} />
-              )}
-            />
-            <Route
-              exact
-              path="/saved"
-              render={props => (
-                <Saved {...this.state} toggleBookSave={this.toggleBookSave} />
-              )}
-            />
-          </Switch>
+          <div className="resultsContainer">
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={props => (
+                  <Search
+                    {...this.state}
+                    toggleBookSave={this.toggleBookSave}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/saved"
+                render={props => (
+                  <Saved {...this.state} toggleBookSave={this.toggleBookSave} />
+                )}
+              />
+            </Switch>
+          </div>
         </div>
       </Router>
     );

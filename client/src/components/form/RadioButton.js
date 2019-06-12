@@ -5,7 +5,7 @@ const RadioButton = ({
   selectedOption,
   handleChange
 }) => {
-  return <label>
+  return <label className={(value === selectedOption) ? 'active' : ''}>
     <input
       type="radio"
       value={value}

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(235, 235, 235);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.1em;
+  line-height: 1.6em;
+  color: rgb(46, 46, 46);
+}
+
+a {
+  color: #3F51B5;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: .7em;
+}
+
+h2 {
+  font-size: 1.4em;
+  font-weight: 500;
+  margin-bottom: .25em;
+}
+
+h3 {
+  font-size: 1.05em;
+  font-weight: 500;
+  margin-bottom: .5em;
+}
+
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px rgb(197, 197, 197);
+}
+
+.navBar a {
+  background: rgb(199, 199, 199);
+  padding: 10px 30px;
+  margin: 0 5px;
+  display: block;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+}
+
+.navBar a:hover {
+  background: rgb(93, 176, 243);
+}
+
+.navBar a.active {
+  background: #2196F3;
+}
+
+.app {
+  padding-top: 100px;
+}
+
+.resultsContainer {
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
+}

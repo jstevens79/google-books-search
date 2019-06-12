@@ -1,5 +1,5 @@
 import React from "react";
-import './BookContainer.css'
+import "./BookContainer.css";
 
 const BookContainer = ({ book, toggleBookSave, savedBooks }) => {
   const Saved = savedBooks.find(s => s.googleId === book.googleId);
@@ -7,20 +7,22 @@ const BookContainer = ({ book, toggleBookSave, savedBooks }) => {
 
   return (
     <div className="bookContainer">
-      <div className="imageContainer">
-        <img src={book.image} alt={book.title} />
+      <div className="bookContent">
+        <div className="imageContainer">
+          <img src={book.image} alt={book.title} />
+        </div>
+        <div className="bookDetails">
+          <a href={book.link} rel="noopener noreferrer" target="_blank">
+            <h2>{book.title}</h2>
+          </a>
+          <span className="published">{book.publishedDate}</span>
+          <h3 className="authors">{book.authors.join(", ")}</h3>
+          <p className="bookDesc">{book.description}</p>
+        </div>
       </div>
-      <div className="bookDetails">
-        <a href={book.link} rel="noopener noreferrer" target="_blank">
-          <h2>{book.title}</h2>
-        </a>
-        <h3 className="authors">
-          {book.authors.join(', ')}
-        </h3>
-        <span className="published">{book.publishedDate}</span>
-        <p>{book.description}</p>
+      <div className="statusBar">
         <button className="addDelete" onClick={() => toggleBookSave(Send)}>
-          {Saved ? "Delete" : "Add"}
+          {Saved ? "Delete -" : "Add +"}
         </button>
       </div>
     </div>
