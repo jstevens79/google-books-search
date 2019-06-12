@@ -5,12 +5,15 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/googleBooks", { useNewUrlParser: true, useFindAndModify: false });
+let db = "mongodb://localhost/googleBooks"
 
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  db = process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds237267.mlab.com:37267/heroku_t9xqk005 "
 }
+
+mongoose.connect(DB, { useNewUrlParser: true, useFindAndModify: false });
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
