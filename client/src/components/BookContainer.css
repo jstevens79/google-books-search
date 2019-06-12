@@ -1,0 +1,48 @@
+.bookContainer {
+  display: flex;
+  margin: 20px auto;
+  border: solid 1px rgb(161, 161, 161);
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 1280px;
+}
+
+.imageContainer {
+  flex: 0;
+  background: rgb(221, 221, 221);
+  border-right: solid 1px rgb(161, 161, 161);
+  padding: 10px;
+}
+
+.imageContainer img {
+  border-radius: 6px;
+}
+
+.bookDetails {
+  flex: 2;
+  padding: 20px 40px;
+}
+
+.addDelete {
+  display: block;
+  background: rgb(224, 224, 224);
+  font-size: 1.2em;
+  padding: .5em 1em;
+  border-radius: 6px;
+  color: rgb(80, 80, 80);
+  border: none;
+  cursor: pointer;
+}
+
+.addDelete:hover {
+  background: rgb(161, 161, 161);
+}
+
+.addDelete:focus {
+  outline: none;
+}
+
+p {
+  font-size: .9em;
+  line-height: 1.6em;
+}
